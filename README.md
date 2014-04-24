@@ -57,6 +57,7 @@ Finding the folder with the notes in Nautilus.
 
 
 This is how you will see the exported notes directory. A side by side comparison with the Gnote list on the left, and the exported .txt on the right. As you see, all of them are there :)
+
 ![image](https://raw.githubusercontent.com/rhoconlinux/rhoconlinux.github.io/master/third-party-assets/cap5.png)
 
 Last, this is how a the output of the process looks. Side by side with the original Gnote note. As you see, the plain text file respects the original layout. :)
