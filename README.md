@@ -53,6 +53,7 @@ The new files will be available in your notes folder of gnote. It is located in 
 ######A couple of screenshots:
 
 Finding the folder with the notes in Nautilus. 
+
 ![image](https://raw.githubusercontent.com/rhoconlinux/rhoconlinux.github.io/master/third-party-assets/cap4.png)
 
 
