@@ -31,7 +31,7 @@ If you want to install it at the system level, simply add this line (will requir
 
 `sudo cp ~/.gnote-massive-export-to-txt/gnote-export-to-txt.sh /usr/bin/gnote-export-to-txt`
 
-This may be usefull if you want to easily access to the command, for instance by typing `gnote-export-to-txt` anytime, anywhere on your terminal. It may also be useful if you want to make regular backups of your notes using *cron *or other task-scheduling app. 
+This may be usefull if you want to easily access to the command anytime by typing `gnote-export-to-txt`, anywhere on your terminal. It may also be useful if you want to make regular backups of your notes using *cron* or other task-scheduling apps. 
 
 ## How to use it
 Using it is very simple. Open a terminal and run:
@@ -43,6 +43,7 @@ or if you made the system-level install, just type:
 `gnote-export-to-txt`
 
 ...the program will do the rest. You will see how the export process starts. It will look like this:
+
 ![image](https://raw.githubusercontent.com/rhoconlinux/rhoconlinux.github.io/master/third-party-assets/cap3.png)
 The time of the process will depend on how many notes you have, but as you may experience, it takes aroung 1 second per note. 
 
