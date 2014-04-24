@@ -68,5 +68,6 @@ Last, this is how a the output of the process looks. Side by side with the origi
 Hope to find it useful. 
 
 
- 
+## Licencing 
 
+This work is open-source following the GPL v3 licence. Please feel free to fork it, improve it, copy it and, if you liked it, diffuse it. :)
