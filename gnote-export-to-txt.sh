@@ -1,49 +1,23 @@
 #!/bin/bash
 
+if [ "$1" == "" ]; then
+    note_files=`ls $HOME/.local/share/gnote/*.note `
+else
+    note_files=`grep -l "<title>$1</title>" $HOME/.local/share/gnote/*.note`
+fi
 
-#VARIABLE DEFINITIONS AND DEFINITION CHECKS
-#============================================
-echo .starting with definitions....
-cd $HOME/.local/share/gnote/
+#cd $HOME/.local/share/gnote/
 ls
-_dest="$HOME/.local/share/gnote/"
-#_file="simple_desktop_creator.desktop"
-#_focus=$_dest$_file
- 
-echo "everything went ok."
-echo
-echo " Path Test......... "  
-echo ...directory:
-echo "$_dest"
+dest="$HOME/gnote_export"
+mkdir -p $dest
 
-		cd "$_dest"        	
 
-			for f in *.note
-			do
-				echo "$f"
-				mkdir -p gnote-notes-in-txt
-				mkdir -p gnote-notes-in-txt/title
-				mkdir -p gnote-notes-in-txt/ok
-				xml_grep 'note-content' "$f" --text_only >> gnote-notes-in-txt/"$f".txt
-				xml_grep 'title' "$f" --text_only >> gnote-notes-in-txt/title/"$f".titleonly.txt
-				cd gnote-notes-in-txt			
-				rename 's/.note.txt/.txt/' * 
-				cd ..
-			done
-			#fixing titles
-			cd gnote-notes-in-txt				
-			for f in *.txt
-			do
-				echo "fixing title for $f"		
- 				cp -a "$f"  ok/"`head -1 "$f"`.txt"
-			done
-		cd ..
+for f in $note_files;
+do
+    sed -e "s/<strikethrough>/[strike]/g;s/<\/strikethrough>/[\/strike]/g;s/<highlight>/[high]/g;s/<\/highlight>/[\/high]/g" $f > /tmp/gnote-export.wrk
+    title=`xml_grep 'title' "$f" --text_only |sed "s/\//_slash_/g;s/\*/_star_/g"`
+    echo -e "file=$f\ttitle=$title"
+    xml_grep 'note-content' "/tmp/gnote-export.wrk" --text_only > $dest/"$title.txt"
+done
 
-rm -R gnote-notes-in-txt/title
 mkdir -p gnote-notes-in-txt/raw-export-backup
-echo "local dir es"
-ls
-mv gnote-notes-in-txt/*.txt gnote-notes-in-txt/raw-export-backup
-mv gnote-notes-in-txt/ok/*.txt gnote-notes-in-txt/ 
-rm -R gnote-notes-in-txt/ok/
-rm -R gnote-notes-in-txt/raw-export-backup/	
