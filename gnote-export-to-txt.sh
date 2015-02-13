@@ -35,7 +35,7 @@ echo "$_dest"
 			for f in *.txt
 			do
 				echo "fixing title for $f"		
- 				cp -a "$f"  ok/"`head -1 "$f"`.txt"
+ 				cp -a -u "$f"  ok/"`head -1 "$f"`.txt"
 			done
 		cd ..
 
@@ -47,3 +47,6 @@ mv gnote-notes-in-txt/*.txt gnote-notes-in-txt/raw-export-backup
 mv gnote-notes-in-txt/ok/*.txt gnote-notes-in-txt/ 
 rm -R gnote-notes-in-txt/ok/
 rm -R gnote-notes-in-txt/raw-export-backup/	
+cd $HOME/.local/share/gnote/
+zip -r gnote2txt.zip gnote-notes-in-txt/
+cd
