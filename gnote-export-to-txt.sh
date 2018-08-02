@@ -26,6 +26,8 @@ echo "$_dest"
 				mkdir -p gnote-notes-in-txt/ok
 				xml_grep 'note-content' "$f" --text_only >> gnote-notes-in-txt/"$f".txt
 				xml_grep 'title' "$f" --text_only >> gnote-notes-in-txt/title/"$f".titleonly.txt
+				LAST_CHANGE_DATE=$(xml_grep 'last-change-date' "$f" --text_only | sed -e 's/[^0-9]//g' | cut -c 1-12)
+				touch -a -m -t $LAST_CHANGE_DATE gnote-notes-in-txt/"$f".txt
 				cd gnote-notes-in-txt			
 				rename 's/.note.txt/.txt/' * 
 				cd ..
